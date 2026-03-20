@@ -792,7 +792,56 @@
 </head>
 
 <body>
+    <div id="countdown-banner"
+        style="background: var(--deep); padding: 1.2rem 2rem; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.06);">
+        <p
+            style="font-family:'Jost',sans-serif; font-size:0.62rem; letter-spacing:0.25em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:0.6rem;">
+            Departing March 30</p>
+        <div style="display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap;">
+            <div style="text-align:center;">
+                <span id="cd-days"
+                    style="font-family:'Cormorant Garamond',serif; font-size:2.5rem; font-weight:300; color:#fff; line-height:1;">--</span>
+                <span
+                    style="display:block; font-size:0.55rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-top:2px;">Days</span>
+            </div>
+            <div style="text-align:center;">
+                <span id="cd-hours"
+                    style="font-family:'Cormorant Garamond',serif; font-size:2.5rem; font-weight:300; color:#fff; line-height:1;">--</span>
+                <span
+                    style="display:block; font-size:0.55rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-top:2px;">Hours</span>
+            </div>
+            <div style="text-align:center;">
+                <span id="cd-mins"
+                    style="font-family:'Cormorant Garamond',serif; font-size:2.5rem; font-weight:300; color:#fff; line-height:1;">--</span>
+                <span
+                    style="display:block; font-size:0.55rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-top:2px;">Minutes</span>
+            </div>
+            <div style="text-align:center;">
+                <span id="cd-secs"
+                    style="font-family:'Cormorant Garamond',serif; font-size:2.5rem; font-weight:300; color:#fff; line-height:1;">--</span>
+                <span
+                    style="display:block; font-size:0.55rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-top:2px;">Seconds</span>
+            </div>
+        </div>
+    </div>
 
+    <script>
+        const target = new Date('2025-03-30T00:00:00');
+        function pad(n) { return String(Math.floor(n)).padStart(2, '0'); }
+        function tick() {
+            const diff = target - new Date();
+            if (diff <= 0) {
+                document.getElementById('countdown-banner').innerHTML = '<p style="font-family:\'Cormorant Garamond\',serif;font-size:1.2rem;font-style:italic;color:rgba(255,255,255,0.6);text-align:center;padding:1rem;">You\'re in Sayulita. Enjoy every second.</p>';
+                return;
+            }
+            document.getElementById('cd-days').textContent = Math.floor(diff / 86400000);
+            document.getElementById('cd-hours').textContent = pad((diff % 86400000) / 3600000);
+            document.getElementById('cd-mins').textContent = pad((diff % 3600000) / 60000);
+            document.getElementById('cd-secs').textContent = pad((diff % 60000) / 1000);
+        }
+        tick();
+        setInterval(tick, 1000);
+    </script>
 
     <nav class="site-nav">
         <div class="nav-inner">
