@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring Break — Sayulita</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --sand: #f5efe6;
+            --warm: #e8ddd0;
+            --ocean: #2a6b7c;
+            --ocean-light: #4a8fa0;
+            --deep: #1a3a42;
+            --coral: #c4694a;
+            --gold: #c4a35a;
+            --text: #2c2318;
+            --muted: #8a7a6a;
+        }
+
+        body {
+            background: var(--sand);
+            color: var(--text);
+            font-family: 'Jost', sans-serif;
+            font-weight: 300;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ── NAV ── */
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(26, 58, 66, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .nav-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-active {
+            font-size: 0.68rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        .nav-link {
+            font-size: 0.68rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.35);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--deep);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 50% 110%, rgba(42, 107, 124, 0.7) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 40% at 20% 20%, rgba(196, 163, 90, 0.15) 0%, transparent 60%),
+                linear-gradient(170deg, #0d2830 0%, #1a3a42 40%, #0a1e24 100%);
+        }
+
+        .wave-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: -50%;
+            width: 200%;
+            height: 160px;
+            border-radius: 50%;
+        }
+
+        .wave1 {
+            background: rgba(42, 107, 124, 0.3);
+            animation: wave 8s ease-in-out infinite;
+            bottom: -20px;
+        }
+
+        .wave2 {
+            background: rgba(42, 107, 124, 0.2);
+            animation: wave 10s ease-in-out infinite reverse;
+            bottom: -10px;
+        }
+
+        .wave3 {
+            background: var(--sand);
+            animation: wave 7s ease-in-out infinite;
+            bottom: -40px;
+        }
+
+        @keyframes wave {
+
+            0%,
+            100% {
+                transform: translateX(-5%) scaleY(1);
+            }
+
+            50% {
+                transform: translateX(5%) scaleY(1.1);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            animation: fadeUp 1.2s ease forwards;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-eyebrow {
+            font-family: 'Jost', sans-serif;
+            font-weight: 400;
+            font-size: 0.7rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(4rem, 12vw, 9rem);
+            font-weight: 300;
+            color: #fff;
+            line-height: 0.9;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero-sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 1.2rem;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-dates {
+            margin-top: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .hero-dates::before,
+        .hero-dates::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .scroll-cue {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.3));
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scaleY(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scaleY(1.2);
+            }
+        }
+
+        /* ── MAIN ── */
+        main {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 5rem 2rem 6rem;
+        }
+
+        /* ── QUICK FACTS ── */
+        .quick-facts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--warm);
+            border: 1px solid var(--warm);
+            margin-bottom: 5rem;
+            animation: fadeUp 0.8s ease 0.2s both;
+        }
+
+        .fact {
+            background: var(--sand);
+            padding: 1.5rem 1.2rem;
+            text-align: center;
+        }
+
+        .fact-icon {
+            font-size: 1.3rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .fact-label {
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 0.3rem;
+        }
+
+        .fact-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--deep);
+        }
+
+        /* ── DAY CARDS ── */
+        .day {
+            margin-bottom: 3.5rem;
+            animation: fadeUp 0.8s ease both;
+        }
+
+        .day:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .day:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .day:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .day:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .day-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--warm);
+        }
+
+        .day-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            color: var(--warm);
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .day-info {
+            flex: 1;
+        }
+
+        .day-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--deep);
+            line-height: 1;
+        }
+
+        .day-name em {
+            font-style: italic;
+            color: var(--coral);
+        }
+
+        .day-tagline {
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 0.3rem;
+        }
+
+        .day-theme {
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--ocean);
+            font-weight: 500;
+            background: rgba(42, 107, 124, 0.08);
+            padding: 0.25rem 0.7rem;
+            border-radius: 2px;
+            align-self: center;
+            white-space: nowrap;
+        }
+
+        /* ── TIMELINE ── */
+        .timeline {
+            position: relative;
+            padding-left: 1.8rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 6px;
+            bottom: 6px;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--ocean-light), var(--warm));
+        }
+
+        .event {
+            position: relative;
+            margin-bottom: 1.2rem;
+            padding-left: 0.8rem;
+        }
+
+        .event::before {
+            content: '';
+            position: absolute;
+            left: -1.8rem;
+            top: 6px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--ocean);
+            border: 2px solid var(--sand);
+            box-shadow: 0 0 0 1px var(--ocean);
+        }
+
+        .event.highlight::before {
+            background: var(--coral);
+            box-shadow: 0 0 0 1px var(--coral);
+        }
+
+        .event.special::before {
+            background: var(--gold);
+            box-shadow: 0 0 0 1px var(--gold);
+        }
+
+        .event-time {
+            font-size: 0.62rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--ocean);
+            font-weight: 500;
+            margin-bottom: 0.1rem;
+        }
+
+        .event.highlight .event-time {
+            color: var(--coral);
+        }
+
+        .event.special .event-time {
+            color: var(--gold);
+        }
+
+        .event-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--deep);
+            line-height: 1.2;
+        }
+
+        .event-detail {
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-top: 0.15rem;
+            line-height: 1.5;
+        }
+
+        .event-detail strong {
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.58rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.15rem 0.5rem;
+            border-radius: 2px;
+            margin-top: 0.3rem;
+            font-weight: 500;
+        }
+
+        .tag-book {
+            background: rgba(196, 105, 74, 0.12);
+            color: var(--coral);
+        }
+
+        .tag-cash {
+            background: rgba(196, 163, 90, 0.15);
+            color: #9a7a30;
+        }
+
+        .tag-tip {
+            background: rgba(42, 107, 124, 0.1);
+            color: var(--ocean);
+        }
+
+        /* ── DIVIDER ── */
+        .section-divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 4rem 0 3rem;
+            color: var(--muted);
+            font-size: 0.62rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+        }
+
+        .section-divider::before,
+        .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--warm);
+        }
+
+        /* ── PRACTICAL NOTES ── */
+        .notes-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--warm);
+            border: 1px solid var(--warm);
+        }
+
+        .note-card {
+            background: var(--sand);
+            padding: 1.5rem;
+        }
+
+        .note-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--deep);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .note-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .note-card li {
+            font-size: 0.78rem;
+            color: var(--muted);
+            line-height: 1.5;
+            padding-left: 0.9rem;
+            position: relative;
+        }
+
+        .note-card li::before {
+            content: '–';
+            position: absolute;
+            left: 0;
+            color: var(--ocean);
+        }
+
+        .note-card li strong {
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        /* ── FOOTER ── */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--deep);
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .footer em {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+            text-transform: none;
+        }
+
+        /* ── BOARDING PASS ── */
+        .boarding-pass {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            margin: 0.6rem 0 0.4rem;
+            border: 1px solid var(--warm);
+            background: white;
+            border-radius: 4px;
+            overflow: hidden;
+            max-width: 320px;
+        }
+
+        .bp-segment {
+            padding: 0.8rem 1.2rem;
+            text-align: center;
+            flex: 1;
+        }
+
+        .bp-city {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--deep);
+            letter-spacing: 0.05em;
+            line-height: 1;
+        }
+
+        .bp-label {
+            font-size: 0.58rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 0.2rem;
+        }
+
+        .bp-middle {
+            padding: 0.8rem 0.6rem;
+            text-align: center;
+            border-left: 1px dashed var(--warm);
+            border-right: 1px dashed var(--warm);
+            color: var(--ocean);
+        }
+
+        .bp-line {
+            font-size: 1rem;
+        }
+
+        .bp-duration {
+            font-size: 0.58rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 0.2rem;
+            white-space: nowrap;
+        }
+
+        .bp-detail {
+            font-size: 0.62rem;
+            color: var(--ocean);
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            margin-top: 0.25rem;
+        }
+
+        .bp-segment:last-child .bp-detail {
+            color: var(--coral);
+        }
+
+        /* ── PLANE TRANSITION ── */
+        .trip-transition {
+            background: var(--deep);
+            padding: 5rem 2rem;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        .trip-transition::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 60% 80% at 50% 100%, rgba(42, 107, 124, 0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .transition-label {
+            font-size: 0.62rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.25);
+            margin-bottom: 0.6rem;
+        }
+
+        .transition-city {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 300;
+            color: #fff;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .plane-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin: 0 auto 1rem;
+            transform: rotate(90deg);
+            animation: planeBob 2s ease-in-out infinite;
+            transition: transform 0.3s;
+        }
+
+        @keyframes planeBob {
+
+            0%,
+            100% {
+                transform: rotate(90deg) translateX(0);
+            }
+
+            50% {
+                transform: rotate(90deg) translateX(6px);
+            }
+        }
+
+        .trip-transition:hover .plane-icon {
+            animation: none;
+            transform: rotate(90deg) translateX(12px);
+        }
+
+        .transition-sub {
+            font-size: 0.62rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* ── PAGE OVERLAY ── */
+        .page-overlay {
+            position: fixed;
+            inset: 0;
+            background: #0a1e24;
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.6s ease;
+        }
+
+        .page-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* ── FLY-IN on arrival ── */
+        @keyframes flyIn {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body.page-entering .hero-content {
+            animation: flyIn 0.8s ease 0.3s both;
+        }
+
+        @media (max-width: 600px) {
+            .quick-facts {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .quick-facts .fact:last-child {
+                grid-column: span 2;
+            }
+
+            .notes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .day-number {
+                font-size: 2.8rem;
+            }
+        }
+
+        .event-detail a {
+            color: var(--ocean);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(42, 107, 124, 0.3);
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .event-detail a:hover {
+            color: var(--ocean-light);
+            border-bottom-color: var(--ocean-light);
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <span class="nav-active">🇲🇽 Sayulita</span>
+            <a href="texas.html" class="nav-link">🇺🇸 Dallas / Fort Worth</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="wave-container">
+            <div class="wave wave1"></div>
+            <div class="wave wave2"></div>
+            <div class="wave wave3"></div>
+        </div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">Nayarit, México</p>
+            <h1 class="hero-title">Sayulita</h1>
+            <p class="hero-sub">surf, sun, corona</p>
+            <div class="hero-dates">Monday — Friday</div>
+        </div>
+        <div class="scroll-cue">
+            <div class="scroll-line"></div>
+            scroll
+        </div>
+    </section>
+
+    <!-- MAIN -->
+    <main>
+
+        <!-- QUICK FACTS -->
+        <div class="quick-facts">
+            <div class="fact">
+                <div class="fact-icon">🏄</div>
+                <div class="fact-label">Surf</div>
+                <div class="fact-value">Every Morning</div>
+            </div>
+            <div class="fact">
+                <div class="fact-icon">🛵</div>
+                <div class="fact-label">Transport</div>
+                <div class="fact-value">Scooter</div>
+            </div>
+            <div class="fact">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-label">First Real Couple Trip</div>
+                <div class="fact-value">Many more to come...</div>
+            </div>
+        </div>
+
+        <!-- DAY 1 -->
+        <div class="day">
+            <div class="day-header">
+                <div class="day-number">01</div>
+                <div class="day-info">
+                    <div class="day-name">Monday &nbsp;<em>— Arrival</em></div>
+                    <div class="day-tagline">Flight · Beach Walk · Casual Dinner</div>
+                </div>
+                <div class="day-theme">🌅 Welcome to Sayulita</div>
+            </div>
+            <div class="timeline">
+                <div class="event">
+                    <div class="event-time">Morning</div>
+                    <div class="event-title">Depart — Flight to Puerto Vallarta</div>
+                    <div class="boarding-pass">
+                        <div class="bp-segment">
+                            <div class="bp-city">TIJ</div>
+                            <div class="bp-label">Tijuana</div>
+                            <div class="bp-detail">9:49 am</div>
+                        </div>
+                        <div class="bp-middle">
+                            <div class="bp-line">✈</div>
+                            <div class="bp-duration">~3 hrs</div>
+                        </div>
+                        <div class="bp-segment">
+                            <div class="bp-city">PVR</div>
+                            <div class="bp-label">Puerto Vallarta</div>
+                            <div class="bp-detail">1:31 pm</div>
+                        </div>
+                    </div>
+                    <div class="event-detail">~45 min drive to Sayulita from PVR. Grab taxi or uber.</div>
+                </div>
+
+                <div class="event">
+                    <div class="event-time">Afternoon</div>
+                    <div class="event-title">Arrive in Sayulita</div>
+                    <div class="event-detail">Check into accommodation. Unpack, relax, explore the town a bit.</div>
+                </div>
+
+                <div class="event">
+                    <div class="event-time">Late Afternoon / Sunset</div>
+                    <div class="event-title">Beach Walk & Sunset — Sayulita Main Beach</div>
+                    <div class="event-detail">Check out main beach then walk south to Playa de los Muertos. Great
+                        spot for sunset photos, fewer vendors, and a swim.</div>
+                </div>
+
+                <div class="event">
+                    <div class="event-time">Evening</div>
+                    <div class="event-title">Dinner — Local Restaurant</div>
+                    <div class="event-detail">Enjoy a casual dinner at a local restaurant. TBD — see wherever catches
+                        our eye.</div>
+                </div>
+
+                <div class="event">
+                    <div class="event-time ">Night</div>
+                    <div class="event-title">Corona Time</div>
+                    <div class="event-detail">Grab a couple Coronas, sit on the beach, and soak in the first night in
+                        Sayulita. Maybe find live music...
+                    </div>
+                </div>
+            </div>
+
+            <!-- DAY 2 -->
+            <div class="day">
+                <div class="day-header">
+                    <div class="day-number">02</div>
+                    <div class="day-info">
+                        <div class="day-name">Tuesday &nbsp;Beach and Birthday</div>
+                        <div class="day-tagline">Surf · Beach Day · Italian Dinner</div>
+                    </div>
+                    <div class="day-theme">Birthday</div>
+                </div>
+                <div class="timeline">
+
+                    <div class="event">
+                        <div class="event-time">Morning</div>
+                        <div class="event-title">Morning Surf — Sayulita Beach</div>
+                        <div class="event-detail">North end has the best break. Best before 10am before the wind picks
+                            up.
+                        </div>
+                    </div>
+
+                    <div class="event">
+                        <div class="event-time">Before/After Surfing</div>
+                        <div class="event-title">Birthday Breakfast — Nativva Sayulita</div>
+                        <div class="event-detail">Highest-rated breakfast in town. <strong>4.9★ · 129 reviews.</strong>
+                            Lively vibe, the owner makes everyone feel at home.</div>
+                    </div>
+
+                    <div class="event">
+                        <div class="event-time">Afternoon</div>
+                        <div class="event-title">GOAT Beach Club — Birthday Afternoon</div>
+                        <div class="event-detail">Drinks on rope swings, music, chairs right on the sand. Seems like a
+                            cool place to check out if we are up for it.
+                        </div>
+                    </div>
+                    <div class="event">
+                        <div class="event-time">Late Afternoon</div>
+                        <div class="event-title">Jet Ski Session</div>
+                        <div class="event-detail">Rentals available right off Sayulita Beach from local vendors.
+                            Usually ~$50–70 USD/hour for two. Book same day on beach.
+                        </div>
+
+                    </div>
+                    <div class="event ">
+                        <div class="event-time">7:00 pm</div>
+                        <div class="event-title">Birthday Dinner — Italian Restaurant</div>
+                        <div class="event-detail">Dinner Plans</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DAY 3 -->
+            <div class="day">
+                <div class="day-header">
+                    <div class="day-number">03</div>
+                    <div class="day-info">
+                        <div class="day-name">Wednesday</div>
+                        <div class="day-tagline">Surf · San Pancho · Sur38 Dinner</div>
+                    </div>
+                    <div class="day-theme">Scooter Day</div>
+                </div>
+                <div class="timeline">
+
+                    <div class="event">
+                        <div class="event-time">Morning</div>
+                        <div class="event-title">Morning Surf — Sayulita Beach</div>
+                        <div class="event-detail">Hopefully I can catch some good waves...</div>
+                    </div>
+
+                    <div class="event">
+                        <div class="event-time">Before/After Surfing</div>
+                        <div class="event-title">Breakfast — Naty's Kitchen</div>
+                        <div class="event-detail">Best cheap breakfast in Sayulita. Cash only.
+                        </div>
+                    </div>
+
+                    <div class="event">
+                        <div class="event-time">Midday</div>
+                        <div class="event-title">Scooter to San Pancho</div>
+                        <div class="event-detail">~20 min north. Local beach, way less crowded than Sayulita —
+                            easy
+                            to find
+                            a spot. Artsy main street worth a wander. You can surf here too if the break looks
+                            good.
+                        </div>
+                    </div>
+
+                    <div class="event">
+                        <div class="event-time">Afternoon</div>
+                        <div class="event-title">Return — Playa de los Muertos</div>
+                        <div class="event-detail">Quiet afternoon swim back in Sayulita. 15 min walk south
+                            through
+                            the
+                            cemetery. Calmer water, fewer vendors.</div>
+                    </div>
+                    <div class="event">
+                        <div class="event-time">7:00 pm</div>
+                        <div class="event-title">Dinner Reservation — Sur38</div>
+                        <div class="event-detail">Best restaurant in Sayulita. <strong>4.9★ · 966
+                                reviews.</strong>
+                            Order
+                            the short ribs and a <em>Caleta</em> — mezcal, passion fruit, and citrus. Wednesday
+                            is
+                            dinner-only (opens 5pm). <a href="https://sur38.com" target="_blank">sur38.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DAY 4 -->
+            <div class="day">
+                <div class="day-header">
+                    <div class="day-number">04</div>
+                    <div class="day-info">
+                        <div class="day-name">Thursday</div>
+                        <div class="day-tagline">Surf · Snorkeling· Last Dinner</div>
+                    </div>
+                    <div class="day-theme">Excursion</div>
+                </div>
+
+                <div class="timeline">
+
+                    <div class="event">
+                        <div class="event-time">Morning</div>
+                        <div class="event-title">Morning Surf — Sayulita Beach</div>
+                        <div class="event-detail">Last surf session of the trip. Make it count.</div>
+                    </div>
+
+                    <div class="event">
+                        <div class="event-time">Before/After Surfing</div>
+                        <div class="event-title">Rooftop Breakfast — Casa Paraíso</div>
+                        <div class="event-detail"><strong>4.9★.</strong> Ocean views, great smoothies and
+                            breakfast
+                            plates.
+                            Opens at 10am — arrive right when they open.</div>
+                    </div>
+
+                    <div class="event highlight">
+                        <div class="event-time">~11:00 am</div>
+                        <div class="event-title">Marietas Islands — Snorkel Tour</div>
+                        <div class="event-detail">Full snorkel excursion with whale watching opportunity </div>
+                        <span class="tag tag-book">Says to Book 1–2 days ahead. Time may be different.</span>
+                    </div>
+
+                    <div class="event special">
+                        <div class="event-time">7:30 pm</div>
+                        <div class="event-title">Final Dinner — TBD/La Rustica Sayulita</div>
+                        <div class="event-detail">Wood-fired pizza and pasta. <strong>4.5★ · 3,500+
+                                reviews.</strong> Order
+                            the truffle pasta or the burrata pizza. Opens at 4:30pm Thu.</div>
+                    </div>
+
+                    <div class="event">
+                        <div class="event-time">After Dinner</div>
+                        <div class="event-title">Night Cap — Plaza & Churro Cart</div>
+                        <div class="event-detail">Grab a churro from the cart in the plaza. Walk around the
+                            lit-up
+                            town.
+                            Las Sirenas Beach Club for a late margarita/corona if we want.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DAY 5 -->
+            <div class="day">
+                <div class="day-header">
+                    <div class="day-number">05</div>
+                    <div class="day-info">
+                        <div class="day-name">Friday &nbsp;<em>— Adiós</em></div>
+                        <div class="day-tagline">Breakfast · Departure</div>
+                    </div>
+                    <div class="day-theme">✈️ Goodbye</div>
+                </div>
+                <div class="timeline">
+                    <div class="event">
+                        <div class="event-time">9:00 am</div>
+                        <div class="event-title">Breakfast — Kahlo Restaurante</div>
+                        <div class="event-detail">Great huevos rancheros and coffee. Easy
+                            walk from where we are.</div>
+                    </div>
+                    <div class="event">
+                        <div class="event-time">After Breakfast</div>
+                        <div class="event-title">Leave For Airport</div>
+                    </div>
+                </div>
+                <div class="boarding-pass">
+                    <div class="bp-segment">
+                        <div class="bp-city">PVR</div>
+                        <div class="bp-label">Puerto Vallarta</div>
+                        <div class="bp-detail">11:55 am</div>
+                    </div>
+                    <div class="bp-middle">
+                        <div class="bp-line">✈</div>
+                        <div class="bp-duration">~3 hrs</div>
+                    </div>
+                    <div class="bp-segment">
+                        <div class="bp-city">DFW</div>
+                        <div class="bp-label">Dallas / Fort Worth</div>
+                        <div class="bp-detail">3:34pm</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NOTES -->
+            <div class="section-divider">Notes</div>
+            <div class="notes-grid">
+                <div class="note-card">
+                    <h4>📌 Need to Book</h4>
+                    <ul>
+                        <li><strong>Marietas Islands Snorkeling </strong> — call day you arrive, permits sell
+                            out
+                            fast</li>
+                        <li><strong>Rancho Mi Chaparrita</strong> — WhatsApp +52 322 190 0302</li>
+                        <li><strong>Jet Skis</strong> — find vendors on the beach, no booking needed</li>
+                    </ul>
+                </div>
+                <div class="note-card">
+                    <h4>💵 Cash & Logistics</h4>
+                    <ul>
+                        <li>Will need to hit the ATM on arrival; many spots are cash only</li>
+                        <li><strong>Naty's Kitchen</strong> is cash only</li>
+                        <li>Surf is best <strong>7–10am</strong> before wind picks up</li>
+                        <li>Scooter is your best friend — park near the plaza</li>
+                    </ul>
+                </div>
+                <div class="note-card">
+                    <h4>🏖️ Beach Guide</h4>
+                    <ul>
+                        <li><strong>Sayulita Main</strong> — surf, lively, vendors</li>
+                        <li><strong>Playa de los Muertos</strong> — quiet, great for swimming</li>
+                        <li><strong>San Pancho</strong> — local, uncrowded, beautiful</li>
+                        <li><strong>Marietas</strong> — snorkel, wildlife, hidden beach vibes</li>
+                    </ul>
+                </div>
+                <div class="note-card">
+                    <h4>🍹 Don't Miss</h4>
+                    <ul>
+                        <li>The <em>Caleta</em> cocktail at Sur38 — mezcal + passion fruit</li>
+                        <li>Churro cart in the plaza at night</li>
+                        <li>Tequila tasting after the horseback ride</li>
+                        <li>Breakfast mole plate at Naty's — order it immediately</li>
+                    </ul>
+                </div>
+            </div>
+
+    </main>
+
+    <footer class="footer">
+        <em>I can't wait!</em>
+        Sayulita, Nayarit · México
+    </footer>
+
+    <!-- PLANE TRANSITION -->
+    <div class="trip-transition" id="toTexas" onclick="flyToPage('dallas.html')">
+        <div class="transition-label">Next Stop</div>
+        <div class="transition-city">Dallas / Fort Worth</div>
+        <div class="plane-icon" id="planeIcon">✈</div>
+        <div class="transition-sub">Click to continue the trip</div>
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="page-overlay" id="pageOverlay"></div>
+
+    <script>
+        // Fade in if arriving from Dallas
+        window.addEventListener('DOMContentLoaded', () => {
+            if (sessionStorage.getItem('flyingIn') === 'sayulita') {
+                document.body.classList.add('page-entering');
+                sessionStorage.removeItem('flyingIn');
+            }
+        });
+
+        function flyToPage(url) {
+            const plane = document.getElementById('planeIcon');
+            const overlay = document.getElementById('pageOverlay');
+
+            plane.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease';
+            plane.style.transform = 'rotate(90deg) translateX(80px)';
+            plane.style.opacity = '0';
+
+            setTimeout(() => overlay.classList.add('active'), 400);
+
+            setTimeout(() => {
+                sessionStorage.setItem('flyingIn', 'dallas');
+                window.location.href = url;
+            }, 900);
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring Break — Dallas / Fort Worth</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --cream: #f2f0eb;
+            --warm: #e2ddd6;
+            --rust: #8b3a2a;
+            --rust-light: #b05a42;
+            --deep: #1c1410;
+            --sky: #4a7fa5;
+            --gold: #b8922a;
+            --text: #1e1a16;
+            --muted: #7a6e64;
+        }
+
+        body {
+            background: var(--cream);
+            color: var(--text);
+            font-family: 'Jost', sans-serif;
+            font-weight: 300;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ── NAV ── */
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(28, 20, 16, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .nav-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-active {
+            font-size: 0.68rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        .nav-link {
+            font-size: 0.68rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.35);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--deep);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 50% at 50% 100%, rgba(139, 58, 42, 0.5) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 40% at 80% 10%, rgba(184, 146, 42, 0.1) 0%, transparent 60%),
+                linear-gradient(160deg, #0e0a08 0%, #1c1410 45%, #0a0806 100%);
+        }
+
+        .skyline {
+            position: absolute;
+            bottom: 60px;
+            left: 0;
+            right: 0;
+            height: 200px;
+            opacity: 0.18;
+        }
+
+        .skyline svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .horizon {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 65px;
+            background: var(--cream);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            animation: fadeUp 1.2s ease forwards;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-eyebrow {
+            font-family: 'Jost', sans-serif;
+            font-weight: 400;
+            font-size: 0.7rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 300;
+            color: #fff;
+            line-height: 0.9;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero-title .slash {
+            display: block;
+            font-size: 0.3em;
+            letter-spacing: 0.5em;
+            color: rgba(255, 255, 255, 0.2);
+            margin: 0.6rem 0;
+            font-style: normal;
+            font-family: 'Jost', sans-serif;
+            font-weight: 300;
+        }
+
+        .hero-sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.45);
+            margin-top: 1.2rem;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-dates {
+            margin-top: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            color: rgba(255, 255, 255, 0.35);
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .hero-dates::before,
+        .hero-dates::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .scroll-cue {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.25);
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.25));
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scaleY(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scaleY(1.2);
+            }
+        }
+
+        /* ── MAIN ── */
+        main {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 5rem 2rem 6rem;
+        }
+
+        /* ── QUICK FACTS ── */
+        .quick-facts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--warm);
+            border: 1px solid var(--warm);
+            margin-bottom: 5rem;
+            animation: fadeUp 0.8s ease 0.2s both;
+        }
+
+        .fact {
+            background: var(--cream);
+            padding: 1.5rem 1.2rem;
+            text-align: center;
+        }
+
+        .fact-icon {
+            font-size: 1.3rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .fact-label {
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 0.3rem;
+        }
+
+        .fact-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--deep);
+        }
+
+        /* ── DAY CARDS ── */
+        .day {
+            margin-bottom: 3.5rem;
+            animation: fadeUp 0.8s ease both;
+        }
+
+        .day:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .day:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .day:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .day:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .day-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--warm);
+        }
+
+        .day-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            color: var(--warm);
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .day-info {
+            flex: 1;
+        }
+
+        .day-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--deep);
+            line-height: 1;
+        }
+
+        .day-name em {
+            font-style: italic;
+            color: var(--rust);
+        }
+
+        .day-tagline {
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 0.3rem;
+        }
+
+        .day-theme {
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--rust);
+            font-weight: 500;
+            background: rgba(139, 58, 42, 0.08);
+            padding: 0.25rem 0.7rem;
+            border-radius: 2px;
+            align-self: center;
+            white-space: nowrap;
+        }
+
+        /* ── TIMELINE ── */
+        .timeline {
+            position: relative;
+            padding-left: 1.8rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 6px;
+            bottom: 6px;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--rust-light), var(--warm));
+        }
+
+        .event {
+            position: relative;
+            margin-bottom: 1.2rem;
+            padding-left: 0.8rem;
+        }
+
+        .event::before {
+            content: '';
+            position: absolute;
+            left: -1.8rem;
+            top: 6px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--rust);
+            border: 2px solid var(--cream);
+            box-shadow: 0 0 0 1px var(--rust);
+        }
+
+        .event.highlight::before {
+            background: var(--sky);
+            box-shadow: 0 0 0 1px var(--sky);
+        }
+
+        .event.special::before {
+            background: var(--gold);
+            box-shadow: 0 0 0 1px var(--gold);
+        }
+
+        .event-time {
+            font-size: 0.62rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--rust);
+            font-weight: 500;
+            margin-bottom: 0.1rem;
+        }
+
+        .event.highlight .event-time {
+            color: var(--sky);
+        }
+
+        .event.special .event-time {
+            color: var(--gold);
+        }
+
+        .event-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--deep);
+            line-height: 1.2;
+        }
+
+        .event-detail {
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-top: 0.15rem;
+            line-height: 1.5;
+        }
+
+        .event-detail strong {
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        .event-detail em {
+            font-style: italic;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.58rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.15rem 0.5rem;
+            border-radius: 2px;
+            margin-top: 0.3rem;
+            font-weight: 500;
+        }
+
+        .tag-book {
+            background: rgba(139, 58, 42, 0.1);
+            color: var(--rust);
+        }
+
+        .tag-cash {
+            background: rgba(184, 146, 42, 0.15);
+            color: #8a6a10;
+        }
+
+        .tag-tip {
+            background: rgba(74, 127, 165, 0.1);
+            color: var(--sky);
+        }
+
+        /* ── BOARDING PASS ── */
+        .boarding-pass {
+            display: flex;
+            align-items: center;
+            margin: 0.6rem 0 0.4rem;
+            border: 1px solid var(--warm);
+            background: white;
+            border-radius: 4px;
+            overflow: hidden;
+            max-width: 320px;
+        }
+
+        .bp-segment {
+            padding: 0.8rem 1.2rem;
+            text-align: center;
+            flex: 1;
+        }
+
+        .bp-city {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--deep);
+            letter-spacing: 0.05em;
+            line-height: 1;
+        }
+
+        .bp-label {
+            font-size: 0.58rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 0.2rem;
+        }
+
+        .bp-detail {
+            font-size: 0.62rem;
+            color: var(--rust);
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            margin-top: 0.25rem;
+        }
+
+        .bp-segment:last-child .bp-detail {
+            color: var(--sky);
+        }
+
+        .bp-middle {
+            padding: 0.8rem 0.6rem;
+            text-align: center;
+            border-left: 1px dashed var(--warm);
+            border-right: 1px dashed var(--warm);
+            color: var(--rust-light);
+        }
+
+        .bp-line {
+            font-size: 1rem;
+        }
+
+        .bp-duration {
+            font-size: 0.58rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 0.2rem;
+            white-space: nowrap;
+        }
+
+        /* ── SECTION DIVIDER ── */
+        .section-divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 4rem 0 3rem;
+            color: var(--muted);
+            font-size: 0.62rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+        }
+
+        .section-divider::before,
+        .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--warm);
+        }
+
+        /* ── NOTES ── */
+        .notes-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--warm);
+            border: 1px solid var(--warm);
+        }
+
+        .note-card {
+            background: var(--cream);
+            padding: 1.5rem;
+        }
+
+        .note-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--deep);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .note-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .note-card li {
+            font-size: 0.78rem;
+            color: var(--muted);
+            line-height: 1.5;
+            padding-left: 0.9rem;
+            position: relative;
+        }
+
+        .note-card li::before {
+            content: '–';
+            position: absolute;
+            left: 0;
+            color: var(--rust);
+        }
+
+        .note-card li strong {
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        /* ── FOOTER ── */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--deep);
+            color: rgba(255, 255, 255, 0.25);
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .footer em {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+            text-transform: none;
+        }
+
+        /* ── RETURN TRANSITION ── */
+        .trip-transition {
+            background: var(--deep);
+            padding: 5rem 2rem;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        .trip-transition::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 60% 80% at 50% 100%, rgba(139, 58, 42, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .transition-label {
+            font-size: 0.62rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.25);
+            margin-bottom: 0.6rem;
+        }
+
+        .transition-city {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 300;
+            color: #fff;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .plane-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin: 0 auto 1rem;
+            transform: rotate(270deg);
+            animation: planeBob 2s ease-in-out infinite;
+            transition: transform 0.3s;
+        }
+
+        @keyframes planeBob {
+
+            0%,
+            100% {
+                transform: rotate(270deg) translateX(0);
+            }
+
+            50% {
+                transform: rotate(270deg) translateX(6px);
+            }
+        }
+
+        .trip-transition:hover .plane-icon {
+            animation: none;
+            transform: rotate(270deg) translateX(12px);
+        }
+
+        .transition-sub {
+            font-size: 0.62rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* ── PAGE OVERLAY ── */
+        .page-overlay {
+            position: fixed;
+            inset: 0;
+            background: #0e0a08;
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.6s ease;
+        }
+
+        .page-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        @keyframes flyIn {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body.page-entering .hero-content {
+            animation: flyIn 0.8s ease 0.3s both;
+        }
+
+        @media (max-width: 600px) {
+            .quick-facts {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .quick-facts .fact:last-child {
+                grid-column: span 2;
+            }
+
+            .notes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .day-number {
+                font-size: 2.8rem;
+            }
+        }
+
+        .event-detail a {
+            color: var(--rust);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(139, 58, 42, 0.3);
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .event-detail a:hover {
+            color: var(--rust-light);
+            border-bottom-color: var(--rust-light);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <a href="sayulita.html" class="nav-link">🇲🇽 Sayulita</a>
+            <span class="nav-active">🇺🇸 Dallas / Fort Worth</span>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="skyline">
+            <svg viewBox="0 0 1200 200" preserveAspectRatio="xMidYMax meet" fill="white"
+                xmlns="http://www.w3.org/2000/svg">
+                <circle cx="310" cy="30" r="12" />
+                <rect x="307" y="42" width="6" height="80" />
+                <rect x="60" y="120" width="40" height="80" />
+                <rect x="108" y="100" width="30" height="100" />
+                <rect x="146" y="130" width="25" height="70" />
+                <rect x="178" y="90" width="35" height="110" />
+                <rect x="220" y="110" width="28" height="90" />
+                <rect x="255" y="80" width="45" height="120" />
+                <rect x="304" y="122" width="14" height="78" />
+                <rect x="340" y="95" width="40" height="105" />
+                <rect x="388" y="115" width="30" height="85" />
+                <rect x="425" y="70" width="50" height="130" />
+                <rect x="483" y="100" width="35" height="100" />
+                <rect x="526" y="120" width="28" height="80" />
+                <rect x="562" y="85" width="42" height="115" />
+                <rect x="612" y="105" width="30" height="95" />
+                <rect x="650" y="130" width="25" height="70" />
+                <rect x="682" y="95" width="38" height="105" />
+                <rect x="728" y="115" width="32" height="85" />
+                <rect x="768" y="140" width="22" height="60" />
+                <rect x="798" y="110" width="35" height="90" />
+                <rect x="840" y="125" width="28" height="75" />
+                <rect x="876" y="100" width="40" height="100" />
+                <rect x="924" y="130" width="25" height="70" />
+                <rect x="957" y="115" width="33" height="85" />
+                <rect x="998" y="140" width="20" height="60" />
+                <rect x="1026" y="120" width="30" height="80" />
+                <rect x="1064" y="105" width="38" height="95" />
+                <rect x="1110" y="130" width="25" height="70" />
+            </svg>
+        </div>
+        <div class="horizon"></div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">Texas, USA</p>
+            <h1 class="hero-title">
+                Dallas
+                <span class="slash">/</span>
+                <em>Fort Worth</em>
+            </h1>
+            <p class="hero-sub">family, rodeos & good eating &nbsp;·&nbsp; friday through monday</p>
+            <div class="hero-dates">Friday — Monday</div>
+        </div>
+        <div class="scroll-cue">
+            <div class="scroll-line"></div>
+            scroll
+        </div>
+    </section>
+
+    <!-- MAIN -->
+    <main>
+
+        <!-- QUICK FACTS -->
+        <div class="quick-facts">
+            <div class="fact">
+                <div class="fact-icon">🤠</div>
+                <div class="fact-value">Southern Girllll</div>
+            </div>
+            <div class="fact">
+                <div class="fact-icon">🍣</div>
+                <div class="fact-value">Really Good Dinner Spots</div>
+            </div>
+            <div class="fact">
+                <div class="fact-icon">👨‍👩‍👧</div>
+                <div class="fact-value">Mac Family</div>
+            </div>
+        </div>
+
+        <!-- DAY 1 — FRIDAY -->
+        <div class="day">
+            <div class="day-header">
+                <div class="day-number">01</div>
+                <div class="day-info">
+                    <div class="day-name">Friday &nbsp;<em>— Arrival</em></div>
+                    <div class="day-tagline">Flight · Check In · Uchi Dinner</div>
+                </div>
+                <div class="day-theme">🛬 Touch Down</div>
+            </div>
+            <div class="timeline">
+                <div class="event">
+                    <div class="event-time">—</div>
+                    <div class="event-title">Depart — Flight to Dallas</div>
+                    <div class="boarding-pass">
+                        <div class="bp-segment">
+                            <div class="bp-city">PVR</div>
+                            <div class="bp-label">Departure</div>
+                            <div class="bp-detail">11:45 AM</div>
+                        </div>
+                        <div class="bp-middle">
+                            <div class="bp-line">✈</div>
+                            <div class="bp-duration"> ~3 hrs</div>
+                        </div>
+                        <div class="bp-segment">
+                            <div class="bp-city">DFW</div>
+                            <div class="bp-label">Dallas / Fort Worth</div>
+                            <div class="bp-detail">1:05 PM</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event">
+                    <div class="event-time">Afternoon</div>
+                    <div class="event-title">Check In + Dallas </div>
+                    <div class="event-detail">Find family, check in, walk around Dallas.</div>
+                </div>
+
+                <div class="event special">
+                    <div class="event-time">Evening</div>
+                    <div class="event-title">Dinner — Uchi Dallas</div>
+                    <div class="event-detail">James Beard Award–winning Chef Tyson Cole's elevated Japanese restaurant
+                        in Uptown Dallas. Dinner with your sister's boyfriend and his family. Order anything raw — the
+                        daily fish specials are outstanding. <a
+                            href="https://uchi.uchirestaurants.com/location/sushi-dallas/">Uchi Sushi</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DAY 2 — SATURDAY -->
+        <div class="day">
+            <div class="day-header">
+                <div class="day-number">02</div>
+                <div class="day-info">
+                    <div class="day-name">Saturday &nbsp;<em>— Fort Worth</em></div>
+                    <div class="day-tagline">Stockyards · Rodeo · Bricks & Horses Dinner</div>
+                </div>
+                <div class="day-theme">🐂 Authentic Texan Day</div>
+            </div>
+            <div class="timeline">
+                <div class="event">
+                    <div class="event-time">Morning</div>
+                    <div class="event-title">Drive to Fort Worth</div>
+                    <div class="event-detail">~35 min west from Dallas. Head straight to the Stockyards</div>
+                </div>
+                <div class="event highlight">
+                    <div class="event-time">Late Morning</div>
+                    <div class="event-title">Fort Worth Stockyards — Explore</div>
+                    <div class="event-detail">Walk Exchange Ave, look at boots, Wrangler, and local shops
+                        along Mule Alley. Twice-daily cattle drives on Exchange Ave </div>
+                </div>
+                <div class="event highlight">
+                    <div class="event-time">Afternoon</div>
+                    <div class="event-title">Stockyards Championship Rodeo</div>
+                    <div class="event-detail">Held at <strong>Cowtown Coliseum</strong> right on Exchange Ave Bull
+                        riding, barrel racing, roping. One of the most authentically Texan things you can do.</div>
+                </div>
+                <div class="event special">
+                    <div class="event-time">Evening</div>
+                    <div class="event-title">Dinner — Bricks & Horses</div>
+                    <div class="event-detail">Modern Texas chophouse "Down-home Texas cuisine meets city sophistication"
+                        table-side meat carving and a revolving pie cart. <a
+                            href="https://www.bricksandhorses.com/">Brick & Horses</a>
+                    </div>
+                </div>
+                <div class="event">
+                    <div class="event-time">After Dinner</div>
+                    <div class="event-title">Drinks — Hotel Drover</div>
+                    <div class="event-detail">Walk back to the Stockyards and wind down at Hotel Drover's
+                        <strong>Veranda Bar</strong> (outdoor, covered) or the <strong>Lobby Bar</strong>. Really cool
+                        hotel with a cool vibe.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DAY 3 — SUNDAY -->
+        <div class="day">
+            <div class="day-header">
+                <div class="day-number">03</div>
+                <div class="day-info">
+                    <div class="day-name">Sunday</div>
+                    <div class="day-tagline">Hudson House Lunch · Drover Drinks · TBD</div>
+                </div>
+                <div class="day-theme">☀️ Easy Day</div>
+            </div>
+
+            <div class="timeline">
+                <div class="event">
+                    <div class="event-time">Morning</div>
+                    <div class="event-title">—</div>
+                    <div class="event-detail">Most likely Church somewhere close...possibly TCU campus</div>
+                </div>
+
+                <div class="event special">
+                    <div class="event-time">Lunch</div>
+                    <div class="event-title">Lunch — Hudson House</div>
+                    <div class="event-detail">One of my sisters favorites apparenlty. East Coast–inspired old-school
+                        casual with
+                        <strong>oysters flown in daily and the French Chicken is a must according to reviews.
+                            <strong>Multiple
+                                Sunday brunch/lunch.</strong>
+                            <a href="https://www.hudsonhousefortworth.com/">Hudson House</a>
+                    </div>
+                    <span class="tag tag-tip">Order the oysters and the chicken</span>
+                </div>
+                <div class="event highlight">
+                    <div class="event-time">Afternoon</div>
+                    <div class="event-title">—</div>
+                    <div class="event-detail">Make your own hat!, explore shops, TBD exact plan.</div>
+                </div>
+
+                <div class="event">
+                    <div class="event-time">Evening</div>
+                    <div class="event-title">Dinner — TBD</div>
+                    <div class="event-detail">Dinner is also TBD this night</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DAY 4 — MONDAY -->
+        <div class="day">
+            <div class="day-header">
+                <div class="day-number">04</div>
+                <div class="day-info">
+                    <div class="day-name">Monday &nbsp;<em>— Departure</em></div>
+                    <div class="day-tagline">Checkout · Flight Home</div>
+                </div>
+                <div class="day-theme">✈️ Home</div>
+            </div>
+            <div class="timeline">
+                <div class="event highlight">
+                    <div class="event-time">—</div>
+                    <div class="event-title">Return Flight</div>
+                    <div class="boarding-pass">
+                        <div class="bp-segment">
+                            <div class="bp-city">DFW</div>
+                            <div class="bp-label">Dallas / Fort Worth</div>
+                            <div class="bp-detail">11:45 AM </div>
+                        </div>
+                        <div class="bp-middle">
+                            <div class="bp-line">✈</div>
+                            <div class="bp-duration"> ~3 hrs</div>
+                        </div>
+                        <div class="bp-segment">
+                            <div class="bp-city">SAN</div>
+                            <div class="bp-label">Home</div>
+                            <div class="bp-detail">1:05 PM</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NOTES
+        <div class="section-divider">Practical Notes</div>
+        <div class="notes-grid">
+            <div class="note-card">
+                
+            <div class="note-card">
+                <h4>🚗 Getting Around</h4>
+                <ul>
+                    <li>Dallas → Fort Worth Stockyards is ~35 min on I-30 W</li>
+                    <li>Uber/Lyft is reliable for nights out in both cities</li>
+                    <li>Stockyards parking: free street lots near Exchange Ave</li>
+                    <li>Hotel Drover has valet if you're driving in</li>
+                </ul>
+            </div>
+            <div class="note-card">
+                <h4>🍽️ Don't Miss</h4>
+                <ul>
+                    <li>Diver Scallop Hot Rock at <strong>Uchi</strong> — a signature dish</li>
+                    <li>Table-side carving & the pie cart at <strong>Bricks & Horses</strong></li>
+                    <li>Oysters + a frozen bellini at <strong>Hudson House</strong></li>
+                    <li>Cowboy Colada at the <strong>Drover Veranda Bar</strong></li>
+                </ul>
+            </div>
+            <div class="note-card">
+                <h4>🤠 Stockyards Tips</h4>
+                <ul>
+                    <li>Cattle drive on Exchange Ave happens <strong>twice daily</strong> — check times</li>
+                    <li>Lucchese on Mule Alley for custom boots if you're feeling it</li>
+                    <li>Drover Backyard has live music Fri & Sat nights</li>
+                    <li>John Wayne Museum is right on the strip — worth a quick look</li>
+                </ul>
+            </div>
+        </div>
+        -->
+
+    </main>
+
+    <footer class="footer">
+        <em>This should also be really fun!</em>
+    </footer>
+
+    <!-- RETURN TRANSITION -->
+    <div class="trip-transition" id="toSayulita" onclick="flyToPage('sayulita.html')">
+        <div class="transition-label">Go back to Sayulita plans</div>
+        <div class="transition-city">Back to Sayulita</div>
+        <div class="plane-icon" id="planeIcon">✈</div>
+        <div class="transition-sub">Click to return</div>
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="page-overlay" id="pageOverlay"></div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            if (sessionStorage.getItem('flyingIn') === 'dallas') {
+                document.body.classList.add('page-entering');
+                sessionStorage.removeItem('flyingIn');
+            }
+        });
+
+        function flyToPage(url) {
+            const plane = document.getElementById('planeIcon');
+            const overlay = document.getElementById('pageOverlay');
+
+            plane.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease';
+            plane.style.transform = 'rotate(270deg) translateX(80px)';
+            plane.style.opacity = '0';
+
+            setTimeout(() => overlay.classList.add('active'), 400);
+
+            setTimeout(() => {
+                sessionStorage.setItem('flyingIn', 'sayulita');
+                window.location.href = url;
+            }, 900);
+        }
+    </script>
+
+</body>
+
+</html>
